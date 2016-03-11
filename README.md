@@ -1,4 +1,5 @@
 # discrete_math
-for homework solutions
+Homework 02 solutions
 
-This is a new try. Hope I can complete all the homeworks.
+1. The only edited files are main.cpp and CurvatureMesh.h.
+2. Build a new project with the same relative path of "MeshLib", "CurvatureMesh" and the file main.cpp.
