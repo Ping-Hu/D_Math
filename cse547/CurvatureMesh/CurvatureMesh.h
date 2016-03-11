@@ -11,15 +11,15 @@
 #include <map>
 #include <vector>
 
-#include "Mesh/Vertex.h"
-#include "Mesh/Edge.h"
-#include "Mesh/Face.h"
-#include "Mesh/HalfEdge.h"
+#include "../../MeshLib/core/Mesh/Vertex.h"
+#include "../../MeshLib/core/Mesh/Edge.h"
+#include "../../MeshLib/core/Mesh/Face.h"
+#include "../../MeshLib/core/Mesh/HalfEdge.h"
 
-#include "Mesh/BaseMesh.h"
-#include "Mesh/boundary.h"
-#include "Mesh/iterators.h"
-#include "Parser/parser.h"
+#include "../../MeshLib/core/Mesh/BaseMesh.h"
+#include "../../MeshLib/core/Mesh/boundary.h"
+#include "../../MeshLib/core/Mesh/iterators.h"
+#include "../../MeshLib/core/parser/parser.h"
 
 #ifndef PI
 #define PI 3.1415926535
