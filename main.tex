@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{Homework 02 solution}
+\author{Ping Hu 110560827 pihu@cs.stonybrook.edu}
+\date{March 2016}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+
+\begin{document}
+
+\maketitle
+
+\section{Running command}
+The command for running the solution is as follows: $${cse547.exe\ mesh.m}$$
+
+\section{Source codes and Project files}
+Please see the project files, cse547, in the submission. 
+
+\section{Algorithm explaination}
+\subsection{Trace Boundaries}
+Method one: implement boundary tracing by myself. \\
+First, find an edge with only one half edge which is a boundary edge. Second, trace this boundary edge to find the adjacent boundary edge by checking if ${he->he\_next()->he\_sym() == NULL}$. Third, store found boundary edges in a list called boundary. \\
+Method two: directly call the method ${bound.loops().size()}$. 
+\subsection{Euler Number}
+Euler number is computed according to the function $$\chi(M)=V+F-E$$.
+\\ The number of \italic{handles} is called genus, denoted as $g$. From topological theory: $$\chi(M)=2-2g-b$$ where $b$ is the number of boundaries. In the codes, I compute the Euler number via$numFaces() + numVertices() -numEdges()$. 
+\subsection{Face Normal}
+The face normal can be computed via
+$$d = (v_1->point()-v_0->point) \times (v_2->point()-v_0->point()$$
+$$n_f=\frac{d}{d.norm()}$$.
+\subsection{Vertex Normal}
+Suppose $v_i$ is the vertex, $v_i$, $v_j$, $v_k$ form a face, denoted as $f^{jk}_i$, with normal $n^{jk}_i$ and area $s^{jk}_i$, then the normal $n_i$ at vertex $v_i$ is computed as $$d_i=\frac{\sum_{jk}n^{jk}_i \times s^{jk}_i}{\sum_{jk} s^{jk}_i}$$ then $$n_i = \frac{d_i}{d_i.norm()}$$
+\subsection{Vertex Gaussian Curvature}
+Given a triangle $v_i$, $v_j$, $v_k$, the edge lengths are defined as $$l_i=(v_j->point() - v_k->point()).norm()$$ the corner angle at vertex $v_i$ is $$\theta_i=acrcos\frac{l^2_j+l^2_k-l^2_i}{2l_jl_k}$$ Then if $v_i$ is on the boundary, its curvature is defined as $$K_i=\pi-\sum_{jk}\theta^{jk}_i$$ where $\theta^{jk}_i$ is the corner angle at $v_i$ in face $v_i$, $v_j$, $v_k$.
+
+If $v_i$ is an interior vertex, its curvature is $$K_i=\pi-\sum_{jk}\theta^{jk}_i$$.
+
+\subsection{Gauss-Bonnet Formula}
+I have written a method to verify Gauss-Bonnet Formula whose name is $template<typename\ M>verify\_GaussBonnet(M * pMesh)$.
+
+
+\bibliographystyle{plain}
+\end{document}
