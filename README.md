@@ -11,10 +11,17 @@ cse547.exe mesh.m
 – Project files
 – Explain your algorithm for each requirement
 (1). Trace Boundaries
+Method one: implement boundary tracing by myself. First, find an edge with only one half edge which is a boundary edge. Second, trace this boundary edge to find the adjacent boundary edge by checking if he->he_next()->he_sym() == NULL. Third, store found boundary edges in a list called boundary.
+Method two: directly call the method bound.loops().size()
 (2). Euler Number
+Euler number is computed according to the function (numFaces + numVertices -numEdges).
 (3). Face Normal
+d = (v1 → point() − v0 → point) × (v2 → point() − v0 → point)
+
 (4). Vertex Normal
+
 (5). Vertex Gaussian Curvature
+
 (6). Gauss-Bonnet Formula
 
 
