@@ -88,10 +88,14 @@ void compute_vertex_curvature(M * pMesh)
 }
 
 //verify Gauss-Bonnet theorem
-/*int from_Euler =2* PI * Euler_number(pMesh);
+template<typename M>
+int verify_GB(M * pMesh)
+{
+	int from_Euler = 2 * PI * Euler_number(pMesh);
 	int from_Gauss = total_curvature(pMesh);
 
-	return (from_Euler-from_Gauss);*/
+	return (from_Euler - from_Gauss);
+}
 
 template<typename M>
 double total_curvature(M * pMesh)
@@ -191,10 +195,10 @@ int compute_boundary_loops(M * pMesh)
 	std::list<CHalfEdge*> boundary;
 	std::vector<int> boundary_length;
 	int * edge_flag = new int[pMesh->numEdges()];
-	int cc = 0; // for debug
+	
 	for (M::MeshEdgeIterator eiter(pMesh); !eiter.end(); eiter++)
 	{
-		cc++;
+		
 		int bl = 0; // boundary length
 		CEdge * edge = *eiter;
 		//he = M::edgeHalfedge(edge, 1);
